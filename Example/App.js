@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from 'react';
-import Modal from 'react-native-modalbox';
+import Modal from './Modal';
 import Slider from 'react-native-slider';
 
 import {

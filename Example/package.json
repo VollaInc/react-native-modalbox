@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "copy": "cp ../index.js ./Modal.js"
   },
   "dependencies": {
     "react": "16.9.0",
