@@ -1,14 +1,14 @@
 {
-  "name": "@volla/react-native-modalbox",
+  "name": "@vollainc/react-native-modalbox",
   "version": "2.0.0",
-  "description": "A <Modal/> component for react-native",
+  "description": "A <Modal/> component for volla",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxs15/react-native-modalbox.git"
+    "url": "https://github.com/VollaInc/react-native-modalbox.git"
   },
   "keywords": [
     "react-component",
@@ -21,13 +21,16 @@
     "window",
     "swipe"
   ],
-  "author": "Maxime Mezrahi",
+  "author": "Wuyialex",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maxs15/react-native-modalbox/issues"
+    "url": "https://github.com/VollaInc/react-native-modalbox/issues"
   },
-  "homepage": "https://github.com/maxs15/react-native-modalbox#readme",
+  "homepage": "https://github.com/VollaInc/react-native-modalbox#readme",
   "dependencies": {
     "prop-types": "^15.5.10"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
