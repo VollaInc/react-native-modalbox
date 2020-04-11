@@ -1,6 +1,6 @@
 {
   "name": "@vollainc/react-native-modalbox",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "A <Modal/> component for volla",
   "main": "index.js",
   "scripts": {
