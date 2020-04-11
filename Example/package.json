@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "copy": "cp ../index.js ./Modal.js"
+    "copy": "cp ../index.js ./Modal.js",
+    "recopy": "cp ./Modal.js ../index.js"
   },
   "dependencies": {
     "react": "16.9.0",
