@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
   },
 });
 
+const springOption = {
+  damping: 50,
+  mass: 0.3,
+  stiffness: 121.6,
+  overshootClamping: true,
+  restSpeedThreshold: 0.3,
+  restDisplacementThreshold: 0.3,
+};
+
 export default class ModalBox extends React.PureComponent {
   static propTypes = {
     isOpen: PropTypes.bool,
@@ -49,7 +58,6 @@ export default class ModalBox extends React.PureComponent {
     backdropContent: PropTypes.element,
     animationDuration: PropTypes.number,
     backButtonClose: PropTypes.bool,
-    easing: PropTypes.func,
     coverScreen: PropTypes.bool,
     keyboardTopOffset: PropTypes.number,
     onClosed: PropTypes.func,
@@ -69,7 +77,6 @@ export default class ModalBox extends React.PureComponent {
     backdropContent: null,
     animationDuration: 400,
     backButtonClose: false,
-    easing: Easing.elastic(0.8),
     coverScreen: false,
     keyboardTopOffset: Platform.OS == 'ios' ? 22 : 0,
     useNativeDriver: true,
@@ -186,11 +193,10 @@ export default class ModalBox extends React.PureComponent {
     }
     this.setState({isAnimateBackdrop: true});
 
-    let animBackdrop = Animated.timing(this.state.backdropOpacity, {
+    let animBackdrop = Animated.spring(this.state.backdropOpacity, {
       toValue: 1,
-      duration: this.props.animationDuration,
-      easing: this.props.easing,
       useNativeDriver: this.props.useNativeDriver,
+      ...springOption,
     }).start(() => {
       this.setState({
         isAnimateBackdrop: false,
@@ -208,11 +214,10 @@ export default class ModalBox extends React.PureComponent {
     }
     this.setState({isAnimateBackdrop: true});
 
-    let animBackdrop = Animated.timing(this.state.backdropOpacity, {
+    let animBackdrop = Animated.spring(this.state.backdropOpacity, {
       toValue: 0,
-      duration: this.props.animationDuration,
-      easing: this.props.easing,
       useNativeDriver: this.props.useNativeDriver,
+      ...springOption,
     }).start(() => {
       this.setState({
         isAnimateBackdrop: false,
@@ -258,11 +263,10 @@ export default class ModalBox extends React.PureComponent {
           ) {
             positionDest = this.props.keyboardTopOffset;
           }
-          let animOpen = Animated.timing(this.state.position, {
+          let animOpen = Animated.spring(this.state.position, {
             toValue: positionDest,
-            duration: this.props.animationDuration,
-            easing: this.props.easing,
             useNativeDriver: this.props.useNativeDriver,
+            ...springOption,
           }).start(() => {
             this.setState({
               isAnimateOpen: false,
@@ -301,14 +305,13 @@ export default class ModalBox extends React.PureComponent {
         isOpen: false,
       },
       () => {
-        let animClose = Animated.timing(this.state.position, {
+        let animClose = Animated.spring(this.state.position, {
           toValue:
             this.props.entry === 'top'
               ? -this.state.containerHeight
               : this.state.containerHeight,
-          duration: this.props.animationDuration,
-          easing: this.props.easing,
           useNativeDriver: this.props.useNativeDriver,
+          ...springOption,
         }).start(() => {
           // Keyboard.dismiss();   // make this optional. Easily user defined in .onClosed() callback
           this.setState(
